@@ -60,11 +60,17 @@ buffer.get()   # should return ['d', 'e', 'f']
 
 ***!Important!*** If you are running this using PowerShell by clicking on the green play button, you will get an error that `names1.txt` is not found.  To resolve this, run it, get the error, then `cd` into the `names` directory in the `python` terminal that opens in VSCode.
 
-Navigate into the `names` directory. Here you will find two text files containing 10,000 names each, along with a program `names.py` that compares the two files and prints out duplicate name entries. Try running the code with `python3 names.py`. Be patient because it might take a while: approximately six seconds on my laptop. What is the runtime complexity of this code?
+Navigate into the `names` directory. Here you will find two text files containing 10,000 names each, along with a program `names.py` that compares the two files and prints out duplicate name entries. Try running the code with `python3 names.py`. Be patient because it might take a while: approximately six seconds on my laptop. What is the runtime complexity of this code? 
+
+**ANSWER**
+The runtime of this code is quadratic runtime. This is because there is one for loop O(n) nested inside of another for loop O(n). this is equivalent to writing O(n) * O(n) or O(n^2). Since the provided code is instantiating one for loop for each input, it is making the machine loop first through one name. As it stops at the first name, it loops through all 10000 names of the second list. Once it finishes looping 10000 times for the first name, it repeates the process for the second name. This results in (10,000 * 10,000 = 100,000,000) operations being done.
 
 Six seconds is an eternity so you've been tasked with speeding up the code. Your goal is to use one of the data structures we built out over the course of this week in order to optimize and improve on the runtime so that it's more efficient than O(n²).
 
 A follow-up question to think about: _*once you've used one of the data structures we implemented over the course of the week*_ in order to improve the runtime of the implementation, what other data structures (including ones from Python's standard library) are also possible candidates for improving the runtime of the implementation?
+
+**ANSWER**
+Using a for loop with a nested if statement is sufficient to provide the desired result.
 
 #### Task 3. Reverse a Linked List
 
