@@ -17,11 +17,12 @@ class LinkedList:
         self.head = None
 
     def add_to_head(self, value):
+        # wrap value in a node
         node = Node(value)
-
+        # if head is not empty then set 'set_next' to the old head
         if self.head is not None:
             node.set_next(self.head)
-
+        # set the head to the new node    
         self.head = node
 
     def contains(self, value):
@@ -39,9 +40,19 @@ class LinkedList:
         return False
 
     def reverse_list(self, node, prev):
-        while node != None:
-            node_nexty = node.next_node
-            node.next_node = prev
-            prev = node
-            node = node_nexty
-        return prev
+        # initiate new_head variable to hold new head value
+        new_head = None
+        # while we are iterating through nodes
+        while node:
+            # hold the next node's value in a temporary variable
+            tmp = node.next_node
+            # assign the node's next_node to the new_head value
+            node.next_node = new_head
+            # assign the new_head value to be that of the node
+            new_head = node
+            # assign the node's new value to be that of the old next and then repeat
+            node = tmp
+        # assign the head to be the new head
+        self.head = new_head
+        # return the new_head
+        return new_head
